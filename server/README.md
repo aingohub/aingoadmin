@@ -7,12 +7,12 @@
 </p>
 
 ## 关于
-`AingoAdmin` 是基于 后端:[go-gin-api](github.com/xinliangnote/go-gin-api) + 前端:[MineAdmin](https://doc.mineadmin.com/front/route.html) 进行模块化设计的单应用管理后台
+`AingoAdmin` 是基于 后端:[go-gin-api](https://github.com/xinliangnote/go-gin-api) + 前端:[MineAdmin](https://doc.mineadmin.com/front/route.html) 进行模块化设计的单应用管理后台
 
 供参考学习，持续更新中...
 
 ## 后端集成组件
-- [go-gin-api](github.com/xinliangnote/go-gin-api)
+- [go-gin-api](https://github.com/xinliangnote/go-gin-api)
 
 1. 支持 [rate](https://golang.org/x/time/rate) 接口限流
 1. 支持 panic 异常时邮件通知
