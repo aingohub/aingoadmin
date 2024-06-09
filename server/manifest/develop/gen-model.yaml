@@ -1,0 +1,18 @@
+relation:
+  - table: user
+    column:
+      status:
+        type: accessor.Color
+    relate:
+      - table: user_profile
+        foreign_key: user_id
+        type: has_one
+      - table: role
+        many_2_many: user_role
+        foreign_key: id
+        join_foreign_key: role_id
+        join_references: user_id
+        references: id
+        type: many_many
+  - table: menu
+  - table: logger

@@ -1,0 +1,33 @@
+{
+  "service_codes": [
+    {
+      "code": "1",
+      "label":"系统级错误",
+      "desc":"1xxxxxx 为系统级错误, 系统意外异常错误如第三方接口调用错误"
+    },
+    {
+      "code": "2",
+      "label":"后台普通错误",
+      "desc":"2xxxxx 为后台普通错误，通常是由用户非法操作引起"
+    }
+  ],
+  "module_codes": [
+    {
+      "code": "00",
+      "label":"全局公用模块",
+      "desc":"x00xxx 为全局公用模块，中间件或公共错误，如鉴权、限流、日志等"
+    },
+    {
+      "code": "01",
+      "label":"系统模块",
+      "desc":"x01xxx 为系统模块，如后台系统配置、站点管理、构建工具等"
+    },
+    {
+      "code": "02",
+      "label":"管理员模块",
+      "desc":"x02xxx 为管理员模块，包括部门、角色、权限"
+    }
+  ],
+  "file_path": "./internal/response/errors.proto",
+  "i18n": ["default","english"]
+}

@@ -1,0 +1,157 @@
+[general]
+ProjectName = "gin-api-mono"
+Version = "v0.0.1"
+Debug = true
+PprofAddr = "" # Pprof monitor address, "localhost:6060"
+DisableSwagger = false
+DisablePrintConfig = false
+DefaultLoginPwd = "6351623c8cef86fefabfa7da046fc619" # MD5("abc-123")
+DenyDeleteMenu = false
+
+[general.HTTP]
+Addr = ":9501"
+ShutdownTimeout = 10
+ReadTimeout = 60
+WriteTimeout = 60
+IdleTimeout = 10
+CertFile = ""
+KeyFile = ""
+
+[storage]
+
+[storage.cache]
+Type = "memory" # memory/badger/redis
+Delimiter = ":"
+
+[storage.cache.Memory]
+CleanupInterval = 60
+
+[storage.cache.Badger]
+Path = "runtime/cache"
+
+[storage.cache.Redis]
+Addr = "127.0.0.1:6379"
+Username = ""
+Password = ""
+DB = 0
+
+[storage.mysql]
+
+[storage.mysql.read]
+addr = '127.0.0.1:3306'
+name = 'aingo-admin'
+pass = '123456'
+user = 'root'
+
+[storage.mysql.write]
+addr = '127.0.0.1:33006'
+name = 'aingo-admin'
+pass = '123456'
+user = 'root'
+
+[storage.mongo]
+uri = "mongodb://127.0.0.1:27017"
+username = ""
+password = ""
+authSource = ""
+
+[util]
+
+[util.captcha]
+Length = 4
+Width = 400
+Height = 160
+CacheType = "memory" # memory/redis
+
+[util.captcha.Redis]
+Addr = "" # If empty, then use the same configuration as Storage.Cache.Redis
+Username = ""
+Password = ""
+DB = 1
+KeyPrefix = "captcha:"
+
+[util.prometheus]
+Enable = false
+Port = 9100
+BasicUsername = "admin"
+BasicPassword = "admin"
+LogApis = [] # Log APIs, e.g. ["/api/v1/users"]
+LogMethods = [] # Log HTTP methods, e.g. ["GET"]
+DefaultCollect = true
+
+
+[util.jwt]
+secret = "i1ydX9RtHyuJTrw7frcu"
+
+[util.aes]
+secret = "m52psEZHSn4!&hbs"
+
+[util.rsa]
+publicKey = """-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtoO/YB9GpcdIspc10Esy
+MSKfBVspAnHsBOiyLmzlHXYfHdOf04aC+rDLC8UTbxm3/VGLTef+b7N9a6BQskjX
+aMoMceKlWihdmvJPD+6ybEpSjcGXj8aaDEjJjiJhLnk1zJ5d+J9OQd5xgRSFtEFy
++OiWEhkqlwMxjFNIY0xXD0iHlnLyrAaB4Jlwp2uIwq6MCzVAJnzF/+8cov6YXfVQ
+YwITDthHGG1KviPQlx5a9Nvjx/jEn1pN8OzcJKI3CRpCEuAP+80xts3nXBFUC5nT
+ouHfTxyriV4r4XEO+N7H3QTBuIZ7Wr8XRFtJQcFAgye2eNJtfYMpYKb+wjqVAbR6
+qwIDAQAB
+-----END PUBLIC KEY-----"""
+privateKey = """-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEAtoO/YB9GpcdIspc10EsyMSKfBVspAnHsBOiyLmzlHXYfHdOf
+04aC+rDLC8UTbxm3/VGLTef+b7N9a6BQskjXaMoMceKlWihdmvJPD+6ybEpSjcGX
+j8aaDEjJjiJhLnk1zJ5d+J9OQd5xgRSFtEFy+OiWEhkqlwMxjFNIY0xXD0iHlnLy
+rAaB4Jlwp2uIwq6MCzVAJnzF/+8cov6YXfVQYwITDthHGG1KviPQlx5a9Nvjx/jE
+n1pN8OzcJKI3CRpCEuAP+80xts3nXBFUC5nTouHfTxyriV4r4XEO+N7H3QTBuIZ7
+Wr8XRFtJQcFAgye2eNJtfYMpYKb+wjqVAbR6qwIDAQABAoIBADF0VYDYOK5m513s
+9xnvpjQGK4yp/Ny6vbc+zjkiLJrlDN1qIF6Sjh8blIkl53QtRduQIu0DNcBSpGNr
+VzJX5nZweRrKzP82/NYlXiL1DMenA+OBV24P5GH7vxGSYz7SfS9qog/iKrRSb/MH
++oqzSVIEw9U3mIC+zsg1MOInJ1fuXAy/rZUKL3Aw5WBwQ8+I7F1bYEn21k5TSgw4
+nnt5o+gK/ooMqLL3eB/CJs3T8RqoHkL5nxt1aVZYCdF7rglMLWpANWneNU3hEteN
+5AvBuo+NOt230/bqK3SkqOofVPJjLiyhoMqPGDUGuC76dGm8KfQojovFpz/tSxGU
+BVsUh/ECgYEA0a9t4Yzf/aJthVneZMO5vcSCfIHgLEdSAAnFMHGkNBbtgKSfbshM
+7nE8vatihkcU7McuZeULFKX/db4rfRahGvuMlH8k5Wzvr+LqcrZQnR27d25+cQiD
+P0p3NRyX6KIYuBcKvarP2hthjN7FwzQ7EF9xQ4OZHHHswkgvd493KU0CgYEA3tP3
+OQPSLQU5MCncxW36Xy6gk4gjYvPIcOG6ME3/hlE6cupOQaRXrG+VadItgJEofZNR
+GePZWMflAe1ntja3N8dZ8hJ5bdGpYsx+rf0BYz/BFXYwWqPxHpoHz+bw797NPKMv
+8yOjqLOzvjUZ8ecIvFpUsseZczwa3fPfP3smd9cCgYEAxOP3R40iXmUAdfDW9MMc
+S+aTqBnDx5AInWSPNlffGdJVnS/3TOzj4BmQMYEWeIOSUGsPVDpn1zGv2H2DFGgF
+SvLdJCrnGE7cGcn231P2CjH678BfFgAqTWm82bBJq/VZRLLOMR6NIX4IcWBVTmBi
+/ZLBJeYSBTWsXRmvCJM8DxkCgYBVUuccrujhEln2pmECPH2dytX0CDI8psq+5sCL
+1KIexaXS8QNsQUjNH6Ef9zozO+I8S5fHiSblxw1a8pQ/Aq6frjcz6X0T3y+0REfR
+ycqpPXVrCWm0m4gtxp9tLapev3rpWDd5K9F0PPN7xwubRHNk5FYAa0vIA2DqUoLO
+5RIy2wKBgQCtyXWbcdG3Acrz90PmZzGIcAHIje+5a9mvOQTZaa7yBxn5RU+jZWqg
+dzRc2cWCabOJX/skT2vKwAzGPaJN3tRhwLxLnVnSv5mrnoMq/0FG2fJ4kSjXcjwt
+/vAm3+3D5KKCAqO/3Umdg2U64h+8jzMO7DtwCYJro2VWNytmgwsL/g==
+-----END RSA PRIVATE KEY-----"""
+
+
+[Middleware]
+
+[Middleware.CORS]
+Enable = false
+AllowOrigins = ["*"]
+AllowMethods = ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"]
+AllowHeaders = ["*"]
+MaxAge = 86400
+AllowWildcard = true
+AllowWebSockets = true
+AllowFiles = true
+
+[Middleware.Trace]
+RequestHeaderKey = "X-Request-Id"
+ResponseTraceKey = "X-Trace-Id"
+
+[Middleware.Logger]
+MaxOutputRequestBodyLen = 4096 # bytes
+MaxOutputResponseBodyLen = 4096 # bytes
+
+[Middleware.Casbin]
+Disable = false
+SkippedPathPrefixes = ["/api/v1/captcha/", "/api/v1/login", "/api/v1/current/"]
+LoadThread = 2
+AutoLoadInterval = 3 # seconds
+ModelFile = "rbac_model.conf"
+GenPolicyFile = "gen_rbac_policy.csv"
+
+[Middleware.Static]
+Dir = ""

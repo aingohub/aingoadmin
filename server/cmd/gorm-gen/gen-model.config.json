@@ -1,0 +1,5 @@
+{
+  "out_path": "./app/backend/schema/dal",
+  "model_pkg_path": "./model",
+  "dns": "root:123456@tcp(dev.wyz.ltd:33006)/ginadmin?charset=utf8mb4&parseTime=True&loc=Local"
+}

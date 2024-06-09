@@ -1,0 +1,64 @@
+# [Air](https://github.com/cosmtrek/air) 的 TOML 格式配置文件
+
+# 工作目录
+# 可以使用 "." 或绝对路径，但请注意以下目录必须在 root 下。
+root = "."
+testdata_dir = "testdata"
+tmp_dir = "tmp"
+
+[build]
+  args_bin = []
+  # 从 `cmd` 产生的二进制文件。
+  bin = "air/main.exe"
+  # 普通的 shell 命令。您也可以使用 `make`。
+  cmd = "go build -o ./air/main.exe ./main.go"
+  delay = 1000
+  # 忽略这些文件扩展名或目录。
+  exclude_dir = ["assets", "tmp", "vendor", "test", "testdata", "logs", "docs", "runtime", "bin"]
+  exclude_file = []
+  exclude_regex = ["_test.go"]
+  exclude_unchanged = false
+  follow_symlink = false
+  # 自定义二进制文件，可以在运行应用程序时设置环境变量。
+  full_bin = ""
+  # 忽略这些文件扩展名或目录。
+  include_dir = []
+  # 监视这些文件扩展名。
+  include_ext = ["go", "tpl", "tmpl", "html"]
+  include_file = []
+  kill_delay = "0s"
+  log = "build-errors.log"
+  poll = false
+  poll_interval = 0
+  # 在 ^C 后运行的命令数组
+  post_cmd = []
+  # 在每次构建之前运行的命令数组
+  pre_cmd = []
+  rerun = false
+  rerun_delay = 500
+  send_interrupt = false
+  stop_on_error = false
+
+[color]
+  app = ""
+  build = "yellow"
+  main = "magenta"
+  runner = "green"
+  watcher = "cyan"
+
+[log]
+  main_only = false
+  time = false
+
+[misc]
+  # 在退出时删除 tmp 目录
+  clean_on_exit = false
+
+[proxy]
+  app_port = 0
+  enabled = false
+  proxy_port = 0
+
+[screen]
+  clear_on_rebuild = false
+  keep_scroll = true

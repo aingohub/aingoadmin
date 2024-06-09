@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package errcode;
+
+option go_package = "internal/response/errcode";
+import "google/protobuf/descriptor.proto";
+
+message Error {
+  int32 code = 1;
+  string msg = 2;
+};
+
+extend google.protobuf.EnumValueOptions {
+  string msg = 1108;
+  string msg_english = 1109;
+}
+
+enum ErrorCode {
+  SUCCESS = 0 [(msg) = "成功", (msg_english) = "successful"];  // 成功
+
+  // System Level Errors
+  UNKNOWN  = 100000 [(msg) = "服务器未知错误", (msg_english) = "unknown error"];
+  RedisConnectError = 100001 [(msg) = "Redis 连接失败", (msg_english) = "redis connect error"];
+  MySQLConnectError = 100002 [(msg) = "MySQL 连接失败", (msg_english) = "mysql connect error"];
+  WriteConfigError = 100003 [(msg) = "写入配置文件失败", (msg_english) = "write config error"];
+
+  // Backend Business Logic Validation Errors (2xxxxx)
+  BasicInternalServerErrorID = 200000 [(msg) = "内部服务器错误", (msg_english) = "internal server error"];
+  BasicBadRequestID = 200001 [(msg) = "请求失败", (msg_english) = "bad request"];
+  BasicUnauthorizedID = 200002 [(msg) = "签名信息错误", (msg_english) = "unauthorized"];
+  BasicForbiddenID = 200003 [(msg) = "请求被禁止", (msg_english) = "forbidden"];
+  BasicNotFoundID = 200004 [(msg) = "资源不存在", (msg_english) = "not found"];
+  BasicMethodNotAllowedID = 200005 [(msg) = "暂无访问权限", (msg_english) = "method not allowed"];
+  BasicTooManyRequestsID = 200006 [(msg) = "请求过多", (msg_english) = "too many requests"];
+  BasicRequestEntityTooLargeID = 200007 [(msg) = "请求内容大小超过限制", (msg_english) = "request entity too large"];
+  BasicConflictID = 200008 [(msg) = "发生冲突,请重试或合并更新", (msg_english) = "conflict"];
+  BasicRequestTimeoutID = 200009 [(msg) = "请求超时", (msg_english) = "request timeout"];
+  BasicParamBindErrorID = 200010 [(msg) = "参数信息错误", (msg_english) = "param bind error"];
+  BasicUrlSignErrorID = 200011 [(msg) = "参数签名错误", (msg_english) = "url sign error"];
+  BasicSocketConnectError = 200012 [(msg) = "Socket 未连接", (msg_english) = "socket connect error"];
+  BasicSocketSendError = 200013 [(msg) = "Socket 消息发送失败", (msg_english) = "Basic socket send error"];
+  FileBackgroundImageFailure = 200014 [(msg) = "获取背景图片失败", (msg_english) = "filebackgroundimagefailure"];
+
+  AdminLoginFailure = 202001 [(msg) = "管理员不存在或者密码错误!", (msg_english) = "The username does not exist or the password is incorrect"];
+  AdminUserBan = 202002 [(msg) = "管理员被禁用", (msg_english) = "user is banned"];
+  AdminCreateError = 202003 [(msg) = "创建管理员失败", (msg_english) = "admin create error"];
+  AdminDetailError = 202004 [(msg) = "获取个人信息失败", (msg_english) = "admin detail error"];
+}

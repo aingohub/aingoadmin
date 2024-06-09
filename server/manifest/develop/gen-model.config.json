@@ -1,0 +1,6 @@
+{
+  "out_path": "./internal/schema/dao",
+  "model_pkg_path": "./internal/schema/model",
+  "dns": "root:123456@tcp(dev.wyz.ltd:33006)/ginadmin?charset=utf8mb4&parseTime=True&loc=Local",
+  "yaml": "./manifest/develop/gen-model.yaml"
+}
